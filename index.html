@@ -7,6 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    test
+    <h1 id="sound"></h1>
+    <input id="name" type="text">
+    <button onclick="getSound()">API 요청</button>
+    <script>
+        function getSound() {
+           
+           const name = document.getElementById('name').value
+           //alert(name)
+            console.log(`http://localhost:3000/sound/${name}`)
+            fetch(`http://localhost:3000/sound/${name}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                document.getElementById('sound').innerHTML = data.sound
+            });
+        
+        }
+    </script>
+
 </body>
 </html>
